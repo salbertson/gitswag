@@ -1,6 +1,6 @@
 require 'octokit'
-require 'active_support/time'
 require 'net/http'
+require 'active_support/time'
 
 class Judge
   def initialize(repo)

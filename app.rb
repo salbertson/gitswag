@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'open-uri'
 require './lib/judge'
 
 class App < Sinatra::Application
@@ -7,10 +8,7 @@ class App < Sinatra::Application
     judge = Judge.new(repo)
     score = judge.score
 
-    if score >= 50
-      send_file 'green.png'
-    else
-      send_file 'red.png'
-    end
+    content_type 'image/png'
+    open("http://placehold.it/#{score * 2}x#{score * 2}").read
   end
 end
