@@ -1,12 +1,19 @@
 require 'sinatra'
 require 'octokit'
-require 'active_support/time'
+require './lib/judge'
 
 get '/:owner/:repo.png' do
-  client = Octokit::Client.new
-  commits = client.commits_since("#{params[:owner]}/#{params[:repo]}", 1.week.ago.to_s)
+  # stars 5x
+  # open pull requests 2x
+  # open issues 1x
+  # commits in last month 1x
+  # code climate 0.5x
+  # travis ci setup 0.5x
 
-  if commits.count > 0
+  judge = Judge.new
+  repo = "#{params[:owner]}/#{params[:repo]}"
+
+  if judge.score(repo) >= 5
     send_file 'green.png'
   else
     send_file 'red.png'
