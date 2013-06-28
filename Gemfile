@@ -5,6 +5,8 @@ ruby '2.0.0'
 gem 'activesupport'
 gem 'octokit'
 gem 'sinatra'
+gem 'foreman'
+gem 'unicorn'
 
 group :development do
   gem 'shotgun'

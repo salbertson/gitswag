@@ -1,21 +1,16 @@
 require 'sinatra'
-require 'octokit'
 require './lib/judge'
 
-get '/:owner/:repo.png' do
-  # stars 5x
-  # open pull requests 2x
-  # open issues 1x
-  # commits in last month 1x
-  # code climate 0.5x
-  # travis ci setup 0.5x
+class App < Sinatra::Application
+  get '/:owner/:repo.png' do
+    repo = "#{params[:owner]}/#{params[:repo]}"
+    judge = Judge.new(repo)
+    score = judge.score
 
-  judge = Judge.new
-  repo = "#{params[:owner]}/#{params[:repo]}"
-
-  if judge.score(repo) >= 5
-    send_file 'green.png'
-  else
-    send_file 'red.png'
+    if score >= 50
+      send_file 'green.png'
+    else
+      send_file 'red.png'
+    end
   end
 end
