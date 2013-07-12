@@ -6,6 +6,7 @@ gem 'activesupport'
 gem 'octokit'
 gem 'sinatra'
 gem 'foreman'
+gem 'redis'
 gem 'unicorn'
 
 group :development do

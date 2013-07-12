@@ -35,6 +35,7 @@ GEM
     rack-protection (1.5.0)
       rack
     raindrops (0.11.0)
+    redis (3.0.4)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.3)
@@ -58,6 +59,7 @@ DEPENDENCIES
   activesupport
   foreman
   octokit
+  redis
   shotgun
   sinatra
   unicorn
