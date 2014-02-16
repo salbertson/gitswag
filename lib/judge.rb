@@ -2,6 +2,7 @@ require 'octokit'
 require 'net/http'
 require 'active_support/time'
 
+# This is a test
 class Judge
   def initialize(repo)
     @repo = repo
