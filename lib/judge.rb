@@ -7,6 +7,7 @@ class Judge
   def initialize(repo)
     @repo = repo
     @github = Octokit::Client.new(login: ENV['GITHUB_LOGIN'], oauth_token: ENV['GITHUB_TOKEN'])
+    test = { :one => 1, :two => 2 }
   end
 
   def score
@@ -72,3 +73,13 @@ class Judge
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
