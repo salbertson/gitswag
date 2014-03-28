@@ -1,11 +1,11 @@
 require 'octokit'
 require 'net/http'
-require 'active_support/time'
+require 'active_support/time'             
 
 # This is a test
 class Judge
   def initialize(repo)
-    @repo = repo               
+    @repo = repo
     @github = Octokit::Client.new(login: ENV['GITHUB_LOGIN'], oauth_token: ENV['GITHUB_TOKEN'])
   end
 
