@@ -3,7 +3,7 @@ require 'net/http'
 require 'active_support/time'
 
 class Judge
-  def initialize(repo)
+  def initialize repo
     @repo = repo
     @github = Octokit::Client.new(login: ENV['GITHUB_LOGIN'], oauth_token: ENV['GITHUB_TOKEN'])
   end
@@ -21,7 +21,7 @@ class Judge
 
   private
 
-  def code_climate_score()
+  def code_climate_score
     code = Net::HTTP.get_response(URI("https://codeclimate.com/github/#{@repo}.png")).code
     if code == '200'
       5
@@ -47,7 +47,7 @@ class Judge
     end
   end
 
-  def pull_request_score               
+  def pull_request_score
     if @github.pull_requests(@repo).count < 5
       20
     else
@@ -55,7 +55,7 @@ class Judge
     end
   end
 
-  def stargazer_score
+  def stargazer_score()
     if @github.stargazers(@repo, page: 4).count >= 10
       50
     else
@@ -71,18 +71,3 @@ class Judge
     end
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
