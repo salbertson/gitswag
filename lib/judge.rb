@@ -22,7 +22,7 @@ class Judge
 
   private
 
-  def code_climate_score
+  def code_climate_score()
     code = Net::HTTP.get_response(URI("https://codeclimate.com/github/#{@repo}.png")).code
     if code == '200'
       5
@@ -75,7 +75,7 @@ class Judge
     end
   end
 
-  def pull_request_score
+  def pull_request_score               
     if @github.pull_requests(@repo).count < 5
       20
     elsif @github.pull_requests(@repo).count < 10
@@ -103,3 +103,18 @@ class Judge
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
